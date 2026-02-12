@@ -17,3 +17,8 @@ jobs:
 
       - name: Build step
         run: echo "Build successful"
+              - name: Send Slack Notification
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{"text":"✅ CI Build Completed Successfully"}' \
+          ${{ secrets.SLACK_WEBHOOK }}
